@@ -9,14 +9,14 @@ router.get('/', function(req, res, next) {
     const search_params = url.searchParams
     if(req.method == 'GET'){
         value = search_params.get("x")
-        if(val == null)
+        if(value == null)
         {
-            val=Math.random(Math.random()*12);
+            value=Math.random(Math.random()*100);
         }
         res.writeHead(200,{ 'Content-Type': 'text/html'});
-        res.write('Math.hypot() applied to '+ val + 'is' +Math.hypot(2,val));
-        res.write('Math.hypot() applied to '+ val + 'is' +Math.ceil(val));
-        res.write('Math.hypot() applied to '+ val + 'is' +Math.clz32(val));
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.hypot(2,value));
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.ceil(value));
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.clz32(value));
         res.end()
     }
 
