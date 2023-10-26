@@ -1,20 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-var X = Math.random() * 100;
-var Y = Math.random() * 200;
-var p1 = 0
-var p2 = 0;
-var p3 = 0;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    p1 = Math.hypot(X);
-    p2 = Math.hypot(Y);
-    p3 = Math.hypot(X);
+    fake_url = "https://fake.com/path" + req.url
+    const url = new URL(fake_url)
+    const search_params = url.searchParams
+    if(req.method == 'GET'){
+        value = search_params.get("x")
+        if(val == null)
+        {
+            val=Math.random(Math.random()*12);
+        }
+        res.writeHead(200,{ 'Content-Type': 'text/html'});
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.hypot(2,val));
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.ceil(val));
+        res.write('Math.hypot() applied to '+ val + 'is' +Math.clz32(val));
+        res.end()
+    }
 
-    res.send(`The Random Number is ${X} and ${Y} <br><br> round applied is ${X} is ${p1} <br><br> round applied is ${Y} is ${p2} <br><br> round applied is ${X} is ${p3}`);
-  
 });
 
 module.exports = router;
